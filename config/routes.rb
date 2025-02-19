@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     namespace :api do
       namespace :v1 do
-        resources :pets, only: [:create]
+        resources :pets, only: [:index, :create]
+
+        get 'pets/outside_zone', to: 'pets#outside_zone'
       end
     end
   end
+
 end

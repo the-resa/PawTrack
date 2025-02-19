@@ -31,9 +31,7 @@ Run tests:
 
 Run curl commands:
 
-`curl http://localhost:3000/up`
-
-Please find more examples in the controller `Api::V1::PetsController`.
+`curl http://localhost:3000/up` Please find more examples in the controller `Api::V1::PetsController`.
 
 Connect to redis:
 
