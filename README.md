@@ -21,10 +21,20 @@ API should now be accessible at:
 
 ## Testing
 
-Connect to the running container:
+Connect to the running container (and from there run tests or curl / redis commands):
 
 `npm run t`
 
 Run tests:
 
 `rspec`
+
+Run curl commands:
+
+`curl http://localhost:3000/up`
+
+Please find more examples in the controller `Api::V1::PetsController`.
+
+Connect to redis:
+
+`rails c` and issue commands like `REDIS.keys`
