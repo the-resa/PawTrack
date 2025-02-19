@@ -34,3 +34,4 @@
 
 .github
 volumes/
+node_modules/
