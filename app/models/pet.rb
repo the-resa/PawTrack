@@ -20,8 +20,7 @@ class Pet
   # Get all pets which are outside the power saving zone.
   # TODO: group by pet type and tracker type
   def self.outside_power_saving_zone
-    all_pets = REDIS.keys("pet:*").flat_map { |key| REDIS.hvals(key) }
-    all_pets.map { |pet| JSON.parse(pet) }.select { |pet| !pet['in_zone'] }
+    self.all.select { |pet| !pet['in_zone'] }
   end
 
   def save

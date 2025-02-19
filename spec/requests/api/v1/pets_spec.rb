@@ -57,5 +57,13 @@ RSpec.describe "Api::V1::Pets", type: :request do
       expect(json_response.map { |pet| pet['owner_id'] }).to include(@pet1.owner_id, @pet3.owner_id)
       expect(json_response.map { |pet| pet['owner_id'] }).not_to include(@pet2.owner_id)
     end
+
+    it "returns an empty array if no pets are outside the zone" do
+      get api_v1_pets_outside_zone_path, as: :json
+      expect(response).to have_http_status(:success)
+
+      json_response = JSON.parse(response.body)
+      expect(json_response).to eq([])
+    end
   end
 end
