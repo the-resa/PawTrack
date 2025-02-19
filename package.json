@@ -1,0 +1,13 @@
+{
+  "name": "docker-scripts",
+  "scripts": {
+    "start": "docker compose up -d && docker attach paw-track || true && docker compose down --remove-orphans",
+    "build": "docker compose build",
+
+    "stop": "docker stop $(docker ps -a -q)",
+    "container": "docker exec -ti paw-track",
+
+    "terminal": "docker exec -ti paw-track /bin/bash",
+    "t": "npm run terminal"
+  }
+}

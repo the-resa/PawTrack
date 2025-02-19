@@ -4,32 +4,17 @@ Necessary steps to get the application up and running.
 
 
 Ensure you have Docker and Docker Compose installed on your system.
-
-```
-docker -v
-docker-compose -v
-```
+Also nodjs and npm are necessary to execute commands from `package.json` file.
 
 
-1. Build and Start the Docker Container
+1. Build the docker container
 
-`docker-compose up --build -d`
+`npm run build`
 
-2. Open a Shell Inside the Container
+2. Start application
 
-`docker-compose exec web bash`
+`npm start`
 
-
-3. Install gems
-
-`bundle install`
-
-
-4. Start the Rails API Server
-
-`rails server -b 0.0.0.0`
-
-
-API should be accessible at:
+API should now be accessible at:
 
 [http://localhost:3000](http://localhost:3000)
