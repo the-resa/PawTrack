@@ -50,6 +50,8 @@ group :development, :test do
 
   # Testing framework [https://rspec.info/]
   gem "rspec-rails", "~> 7.1"
+
+  gem 'mock_redis', '~> 0.49.0'
 end
 
 
