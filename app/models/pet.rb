@@ -12,17 +12,32 @@ class Pet
   validate :lost_tracker_only_for_cats
 
   # Get all pets from redis.
+  #
   def self.all
     all_pets = REDIS.keys("pet:*").flat_map { |key| REDIS.hvals(key) }
     all_pets.map { |pet| JSON.parse(pet) }
   end
 
-  # Get all pets which are outside the power saving zone.
-  # TODO: group by pet type and tracker type
+  # Get all pets which are outside the power saving zone, grouped by pet type and tracker type.
+  # Returns a hash with the following structure:
+  #   {"Dog" => {"big" => 1, "medium" => 1}, "Cat" => {"small" => 2}}
+  #
   def self.outside_power_saving_zone
-    self.all.select { |pet| !pet['in_zone'] }
+    outside_pets = self.all.select { |pet| !pet['in_zone'] }
+
+    grouped_pets = outside_pets.group_by { |pet| [pet['pet_type'], pet['tracker_type']] }
+    result = {}
+
+    grouped_pets.each do |(pet_type, tracker_type), pets|
+      result[pet_type] ||= {}
+      result[pet_type][tracker_type] = pets.count
+    end
+
+    result
   end
 
+  # Save pet data to redis.
+  #
   def save
     return false unless valid?
 
