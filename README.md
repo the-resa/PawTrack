@@ -2,10 +2,9 @@
 
 Necessary steps to get the application up and running.
 
-
+## Setup
 Ensure you have Docker and Docker Compose installed on your system.
-Also nodjs and npm are necessary to execute commands from `package.json` file.
-
+Also node and npm are necessary to execute commands from `package.json` file.
 
 1. Build the docker container
 
@@ -18,3 +17,14 @@ Also nodjs and npm are necessary to execute commands from `package.json` file.
 API should now be accessible at:
 
 [http://localhost:3000](http://localhost:3000)
+
+
+## Testing
+
+Connect to the running container:
+
+`npm run t`
+
+Run tests:
+
+`rspec`
